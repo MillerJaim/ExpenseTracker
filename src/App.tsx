@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import ExpenseForm, { ExpenseData } from './components/ExpenseForm';
 import ExpenseList from './components/ExpenseList';
+import ExpenseStats from './components/ExpenseStats';
 import { saveExpensesToStorage, loadExpensesFromStorage } from './utils/localStorage';
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
       </header>
       <main>
         <ExpenseForm onAddExpense={handleAddExpense} />
+        <ExpenseStats expenses={expenses} />
         <ExpenseList 
           expenses={expenses} 
           onDeleteExpense={handleDeleteExpense} 
