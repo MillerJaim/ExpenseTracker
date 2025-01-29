@@ -5,9 +5,10 @@ import './ExpenseList.css';
 interface ExpenseListProps {
   expenses: ExpenseData[];
   onDeleteExpense: (id: string) => void;
+  onEditExpense: (expense: ExpenseData) => void;
 }
 
-const ExpenseList: React.FC<ExpenseListProps> = ({ expenses, onDeleteExpense }) => {
+const ExpenseList: React.FC<ExpenseListProps> = ({ expenses, onDeleteExpense, onEditExpense }) => {
   const formatAmount = (amount: number) => {
     return `$${amount.toFixed(2)}`;
   };
@@ -70,13 +71,22 @@ const ExpenseList: React.FC<ExpenseListProps> = ({ expenses, onDeleteExpense }) 
             <div className="expense-amount">
               {formatAmount(expense.amount)}
             </div>
-            <button 
-              className="delete-btn"
-              onClick={() => onDeleteExpense(expense.id)}
-              title="Delete expense"
-            >
-              ×
-            </button>
+            <div className="expense-actions">
+              <button 
+                className="edit-btn"
+                onClick={() => onEditExpense(expense)}
+                title="Edit expense"
+              >
+                ✏️
+              </button>
+              <button 
+                className="delete-btn"
+                onClick={() => onDeleteExpense(expense.id)}
+                title="Delete expense"
+              >
+                ×
+              </button>
+            </div>
           </div>
         ))}
       </div>

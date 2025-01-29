@@ -4,12 +4,15 @@ import ExpenseForm, { ExpenseData } from './components/ExpenseForm';
 import ExpenseList from './components/ExpenseList';
 import ExpenseStats from './components/ExpenseStats';
 import ExpenseFilter, { FilterCriteria } from './components/ExpenseFilter';
+import EditExpenseModal from './components/EditExpenseModal';
 import { saveExpensesToStorage, loadExpensesFromStorage } from './utils/localStorage';
 
 function App() {
   const [expenses, setExpenses] = useState<ExpenseData[]>([]);
   const [filteredExpenses, setFilteredExpenses] = useState<ExpenseData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [editingExpense, setEditingExpense] = useState<ExpenseData | null>(null);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   useEffect(() => {
     const loadedExpenses = loadExpensesFromStorage();
@@ -30,6 +33,26 @@ function App() {
 
   const handleDeleteExpense = (id: string) => {
     setExpenses(prev => prev.filter(expense => expense.id !== id));
+  };
+
+  const handleEditExpense = (expense: ExpenseData) => {
+    setEditingExpense(expense);
+    setIsEditModalOpen(true);
+  };
+
+  const handleSaveEdit = (updatedExpense: ExpenseData) => {
+    setExpenses(prev => 
+      prev.map(expense => 
+        expense.id === updatedExpense.id ? updatedExpense : expense
+      )
+    );
+    setIsEditModalOpen(false);
+    setEditingExpense(null);
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditModalOpen(false);
+    setEditingExpense(null);
   };
 
   const handleFilterChange = (criteria: FilterCriteria) => {
@@ -91,7 +114,14 @@ function App() {
         <ExpenseStats expenses={filteredExpenses} />
         <ExpenseList 
           expenses={filteredExpenses} 
-          onDeleteExpense={handleDeleteExpense} 
+          onDeleteExpense={handleDeleteExpense}
+          onEditExpense={handleEditExpense}
+        />
+        <EditExpenseModal
+          expense={editingExpense}
+          isOpen={isEditModalOpen}
+          onSave={handleSaveEdit}
+          onCancel={handleCancelEdit}
         />
       </main>
     </div>
