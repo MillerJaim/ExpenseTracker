@@ -102,7 +102,7 @@ const ExpenseForm: React.FC<ExpenseFormProps> = ({ onAddExpense }) => {
       </div>
 
       <button type="submit" className="submit-btn">
-        Add Expense
+        💰 Add Expense
       </button>
     </form>
   );

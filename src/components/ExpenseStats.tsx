@@ -62,7 +62,8 @@ const ExpenseStats: React.FC<ExpenseStatsProps> = ({ expenses }) => {
       <div className="expense-stats">
         <h2>Statistics</h2>
         <div className="stats-empty">
-          <p>No data to show yet</p>
+          <p>📊 No data to show yet</p>
+          <p style={{fontSize: '0.9rem', color: '#999'}}>Start adding expenses to see statistics</p>
         </div>
       </div>
     );

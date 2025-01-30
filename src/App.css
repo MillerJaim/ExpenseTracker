@@ -5,20 +5,22 @@
 }
 
 .App-header {
-  background-color: #282c34;
-  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 24px;
   color: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .App-header h1 {
   margin: 0;
   font-size: 2.5rem;
+  font-weight: 700;
 }
 
 .App-header p {
-  margin: 10px 0 0 0;
+  margin: 12px 0 0 0;
   font-size: 1.1rem;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 main {

@@ -38,7 +38,8 @@ const ExpenseList: React.FC<ExpenseListProps> = ({ expenses, onDeleteExpense, on
       <div className="expense-list">
         <h2>Your Expenses</h2>
         <div className="empty-state">
-          <p>No expenses yet. Add your first expense above!</p>
+          <p>📝 No expenses yet</p>
+          <p style={{fontSize: '0.9rem', color: '#999', marginTop: '8px'}}>Add your first expense above to get started!</p>
         </div>
       </div>
     );

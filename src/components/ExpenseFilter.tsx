@@ -60,7 +60,7 @@ const ExpenseFilter: React.FC<ExpenseFilterProps> = ({ onFilterChange, onClearFi
           className={`filter-toggle ${showFilters ? 'active' : ''}`}
           onClick={() => setShowFilters(!showFilters)}
         >
-          <span>Filters</span>
+          <span>🔍 Filters</span>
           {hasActiveFilters && <span className="filter-badge">{
             [category, dateFrom, dateTo].filter(Boolean).length
           }</span>}
